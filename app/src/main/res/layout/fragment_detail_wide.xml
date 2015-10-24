@@ -1,0 +1,111 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingLeft="16dp">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:minWidth="56dp"
+                android:orientation="vertical"
+                android:paddingTop="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:minWidth="120dp"
+                    android:fontFamily="sans-serif-condensed"
+                    android:textSize="24sp"
+                    android:id="@+id/detailed_weather_day"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-condensed"
+                    android:textSize="20sp"
+                    android:textColor="@color/greyText"
+                    android:id="@+id/detailed_weather_date"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="32dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-light"
+                    android:textSize="96sp"
+                    android:id="@+id/detailed_weather_high"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-light"
+                    android:textSize="48sp"
+                    android:textColor="@color/greyText"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginLeft="16dp"
+                    android:id="@+id/detailed_weather_low"/>
+
+                <!-- Humidity, wind, pressure -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-condensed"
+                    android:textSize="18sp"
+                    android:layout_marginBottom="4dp"
+                    android:id="@+id/detailed_weather_humidity"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-condensed"
+                    android:textSize="18sp"
+                    android:layout_marginBottom="4dp"
+                    android:id="@+id/detailed_weather_pressure"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-condensed"
+                    android:textSize="18sp"
+                    android:id="@+id/detailed_weather_wind"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"
+                android:paddingTop="16dp"
+                android:layout_marginLeft="64dp">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/detailed_weather_icon"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-condensed"
+                    android:textAppearance="?android:textAppearanceLarge"
+                    android:textColor="@color/greyText"
+                    android:id="@+id/detailed_weather_description"/>
+
+            </LinearLayout>
+
+    </LinearLayout>
+
+</ScrollView>
