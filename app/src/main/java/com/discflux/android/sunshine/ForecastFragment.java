@@ -1,5 +1,6 @@
 package com.discflux.android.sunshine;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
@@ -140,9 +141,8 @@ public class ForecastFragment extends Fragment implements LoaderManager.LoaderCa
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_refresh) {
-            updateWeather();
+        if (id == R.id.action_map) {
+            openPreferredLocationInMap();
             return true;
         }
 
@@ -166,14 +166,30 @@ public class ForecastFragment extends Fragment implements LoaderManager.LoaderCa
         super.onSaveInstanceState(outState);
     }
 
+    private void openPreferredLocationInMap() {
+        //view map intent
+        if (null!=mForecastAdapter) {
+            Cursor c = mForecastAdapter.getCursor();
+            if (null != c) {
+                c.moveToPosition(0);
+                String latitude = c.getString(COL_COORD_LAT);
+                String longitude = c.getString(COL_COORD_LONG);
+                Uri geoLocation = Uri.parse("geo:" + latitude + "," + longitude);
+
+                Intent mapIntent = new Intent(Intent.ACTION_VIEW);
+                mapIntent.setData(geoLocation);
+                if (mapIntent.resolveActivity(getActivity().getPackageManager()) != null) {
+                    startActivity(mapIntent);
+                }
+            }
+        }
+    }
+
     private void updateWeather() {
         /*Intent intent = new Intent(getActivity(), SunshineService.AlarmReceiver.class);
         intent.putExtra(LOCATION_QUERY_EXTRA, location);
-
         AlarmManager alarmMgr = (AlarmManager)getActivity().getSystemService(Context.ALARM_SERVICE);
-
         PendingIntent alarmIntent = PendingIntent.getBroadcast(getActivity(), 0, intent, PendingIntent.FLAG_ONE_SHOT);
-
         alarmMgr.set(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + 5000, alarmIntent);*/
 
         SunshineSyncAdapter.syncImmediately(getActivity());
